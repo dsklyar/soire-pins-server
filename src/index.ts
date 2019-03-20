@@ -4,7 +4,6 @@ import express from "express";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
-console.log(resolvers);
 const server = new ApolloServer({ typeDefs, resolvers });
 
 // initialize configuration
