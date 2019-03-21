@@ -1,7 +1,11 @@
-import { pinsColelction } from "../data/index";
+import { pinCollection } from "../data/index";
+import { IPin } from "../../src/typeDefs/types/pinType";
 
 export class PinModel {
-	public static all() {
-		return pinsColelction.find();
+	public static all(): IPin[] {
+		return pinCollection.find();
+	}
+	public static addOne(pin: IPin) {
+		return pinCollection.insert(pin);
 	}
 }

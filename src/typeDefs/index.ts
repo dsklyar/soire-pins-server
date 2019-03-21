@@ -1,4 +1,4 @@
 import { query } from "./query";
-import { pinType } from "./types";
+import { pinType, userType } from "./types";
 
-export const typeDefs = [query, pinType];
+export const typeDefs = [query, pinType, userType];
