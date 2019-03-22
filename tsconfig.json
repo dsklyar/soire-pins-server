@@ -11,9 +11,7 @@
 		"paths": {
 			"*": ["node_modules/*", "src/typings/*"]
 		},
-		"typeRoots": ["node_modules/@types", "src/typings/index.d"],
-		"declaration": true,
+		"typeRoots": ["node_modules/@types"]
 	},
-	"files": ["src/typings/index.d.ts"],
 	"include": ["src/**/*"]
 }

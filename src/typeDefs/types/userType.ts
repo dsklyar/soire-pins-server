@@ -15,11 +15,18 @@ export interface IUser {
 	profileImg?: string;
 	userType: UserTypeEnum
 	hash: string;
+	_id?: string
+}
+
+export interface IUserResponse {
+	success: boolean;
+	error?: string;
+	newUser?: IUser;
 }
 
 export const userType = gql`
 	type UserResponse {
-		success: Boolean
+		success: Boolean!
 		error: String
 		newUser: User
 	}

@@ -4,24 +4,16 @@ import express from "express";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
-const server = new ApolloServer({ typeDefs, resolvers });
-
-// initialize configuration
 dotenv.config();
 
+const { SERVER_PORT, GRAPHQL_PATH } = process.env;
+
+const server = new ApolloServer({ typeDefs, resolvers });
 const app = express();
-// port is now available to the Node.js runtime
-// as if it were an environment variable
-const port = process.env.SERVER_PORT;
 
 server.applyMiddleware({ app });
 
-// define a route handler for the default home page
-app.get("/", (req, res) => {
-	res.send("Hello world!");
-});
-
 // start the Express server
-app.listen(port, () => {
-	console.log(`server started at http://localhost:${port}`);
+app.listen({ port: SERVER_PORT }, () => {
+	console.log(`server started at http://localhost:${SERVER_PORT}${GRAPHQL_PATH}`);
 });
