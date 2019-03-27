@@ -1,5 +1,5 @@
 import { UserModel } from "../models/index";
-import { IUser } from "../typeDefs/types/userType";
+import { IUser, IUserSignUp } from "../typeDefs/types/userType";
 import { IAppResolver } from ".";
 
 export const usersResolvers = {
@@ -7,9 +7,9 @@ export const usersResolvers = {
 		getUsers: () => UserModel.all()
 	},
 	Mutation: {
-		addUser: (parent: any, data: IUser, context: any, info: any) => {
+		signUp: (parent: any, data: IUserSignUp, context: any, info: any) => {
 			console.debug(parent, data, context, info);
-			return UserModel.addOne(data);
+			return UserModel.signUp(data);
 		}
 	}
 };

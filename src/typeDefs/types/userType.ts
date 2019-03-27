@@ -18,10 +18,16 @@ export interface IUser {
 	_id?: string
 }
 
-export interface IUserResponse {
+export interface IUserSignUp {
+	username: string;
+	email: string;
+	password: string;
+}
+
+export interface IUserResponse<T> {
 	success: boolean;
 	error?: string;
-	newUser?: IUser;
+	newUser?: T;
 }
 
 export const userType = gql`

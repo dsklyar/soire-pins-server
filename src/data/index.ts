@@ -1,15 +1,18 @@
 import lokiDB from "lokijs";
 import { IPin } from "../typeDefs/types/pinType";
 import { IUser } from "../typeDefs/types/userType";
+import { ISession } from "../typeDefs/types/sessionType";
 
 export const loki = new lokiDB("db.json", {
 	autoload: true,
 	autosave: true,
-	autosaveInterval: 1000
+	autosaveInterval: 1000,
+	serializationMethod: "pretty"
 });
 
 export const pinCollection = loki.addCollection("pins");
 export const userCollection = loki.addCollection("users");
+export const sessionCollection = loki.addCollection<ISession>("sessions");
 
 const pins = [
 	{ location: "", title: "Home", description: "My home is here", imageUrl: "" },

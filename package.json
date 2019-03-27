@@ -21,12 +21,22 @@
 		"typescript": "^3.3.4000"
 	},
 	"dependencies": {
+		"@types/bcrypt": "^3.0.0",
 		"@types/graphql": "^14.0.7",
+		"@types/jsonwebtoken": "^8.3.2",
 		"@types/lokijs": "^1.5.2",
+		"@types/passport": "^1.0.0",
+		"@types/passport-jwt": "^3.0.1",
+		"@types/shortid": "0.0.29",
 		"apollo-server": "^2.4.8",
+		"bcrypt": "^3.0.5",
 		"dotenv": "^7.0.0",
 		"express": "^4.16.4",
 		"graphql": "^14.1.1",
-		"lokijs": "^1.5.6"
+		"jsonwebtoken": "^8.5.1",
+		"lokijs": "^1.5.6",
+		"passport": "^0.4.0",
+		"passport-jwt": "^4.0.0",
+		"shortid": "^2.2.14"
 	}
 }

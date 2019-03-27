@@ -6,14 +6,9 @@ export const query = gql`
 		getUsers: [User]
 	}
 	type Mutation {
-		addUser(
+		signUp(
 			username: String!, 
 			email: String!,
-			firstName: String,
-			lastName: String,
-			country:String,
-			profileImage: String,
-			userType: String!,
-			hash: String!): UserResponse
+			password: String!): UserResponse
 	}
 `;
