@@ -7,8 +7,12 @@ export const query = gql`
 	}
 	type Mutation {
 		signUp(
-			username: String!, 
+			username: String!,
 			email: String!,
 			password: String!): UserResponse
+		signIn(
+			username: String!,
+			password: String!
+		): UserResponse
 	}
 `;

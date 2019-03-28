@@ -1,6 +1,7 @@
 import { ApolloServer } from "apollo-server-express";
 import dotenv from "dotenv";
 import express from "express";
+import jwt from "jsonwebtoken";
 import passport from "passport";
 import {
 	ExtractJwt,
@@ -8,11 +9,10 @@ import {
 	StrategyOptions,
 	VerifiedCallback
 } from "passport-jwt";
-import jwt from "jsonwebtoken";
 
+import { loki } from "./data";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
-import { loki } from "./data";
 
 dotenv.config();
 
@@ -46,7 +46,7 @@ app.use("/graphql", (req, res, next) => {
 		}
 		next();
 	})(req, res, next);
-})
+});
 
 const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => ({
 	user: req.user

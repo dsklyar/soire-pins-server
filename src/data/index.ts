@@ -1,11 +1,23 @@
 import lokiDB from "lokijs";
 import { IPin } from "../typeDefs/types/pinType";
-import { IUser } from "../typeDefs/types/userType";
 import { ISession } from "../typeDefs/types/sessionType";
+import { IUser } from "../typeDefs/types/userType";
 
-export const loki = new lokiDB("db.json", {
+const adapter = new lokiDB.LokiFsAdapter();
+const databaseInitialize = () => {
+	console.log("Database Initialized");
+};
+
+const databaseSaved = () => {
+	console.log("Database saved");
+};
+
+export const loki = new lokiDB("warpDB.json", {
+	adapter,
 	autoload: true,
 	autosave: true,
+	autoloadCallback: databaseInitialize,
+	autosaveCallback: databaseSaved,
 	autosaveInterval: 1000,
 	serializationMethod: "pretty"
 });
@@ -39,5 +51,5 @@ const users = [
 	}
 ] as IUser[];
 
-pins.forEach(pin => pinCollection.insert(pin));
-users.forEach(user => userCollection.insert(user));
+pins.forEach((pin) => pinCollection.insert(pin));
+users.forEach((user) => userCollection.insert(user));

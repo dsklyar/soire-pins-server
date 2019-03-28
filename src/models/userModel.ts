@@ -1,13 +1,13 @@
+import bcrypt from "bcrypt";
+import sid from "shortid";
+import { sessionCollection, userCollection } from "../data";
+import { ISession, ISessionResponse } from "../typeDefs/types/sessionType";
 import {
 	IUser,
 	IUserResponse,
 	IUserSignUp,
 	UserTypeEnum
 } from "../typeDefs/types/userType";
-import { userCollection, sessionCollection } from "../data";
-import bcrypt from "bcrypt";
-import sid from "shortid";
-import { ISession, ISessionResponse } from "../typeDefs/types/sessionType";
 
 const SALT_ROUNDS = 12;
 
@@ -26,11 +26,11 @@ export class UserModel {
 				email: userSignUp.email,
 				hash: await bcrypt.hash(userSignUp.password, SALT_ROUNDS)
 			} as IUser;
-			const newUser = userCollection.insert(createUser);
+			const user = userCollection.insert(createUser);
 			return {
 				success: true,
 				error: undefined,
-				newUser
+				user
 			};
 		} catch (e) {
 			return {
@@ -45,7 +45,7 @@ export class UserModel {
 		password: string
 	): Promise<ISessionResponse<ISession>> {
 		try {
-			const user = userCollection.findOne({ username }) as IUser;
+			const user = userCollection.findOne({ username }) as IUser & LokiObj;
 			if (!user) {
 				throw new Error(`User not found here`);
 			}
@@ -56,7 +56,7 @@ export class UserModel {
 			const ssid = sid.generate();
 			const session = {
 				ssid,
-				userId: user._id,
+				userId: user.$loki.toString(),
 				expiresOn: new Date(Date.now() + 3 * 60 * 60 * 100).toString()
 			} as ISession;
 			const newSession = sessionCollection.insert(session);
@@ -97,7 +97,7 @@ export class UserModel {
 			return {
 				success: true,
 				error: undefined,
-				newUser
+				user: newUser
 			};
 		} catch (e) {
 			return {

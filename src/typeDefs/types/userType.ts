@@ -13,9 +13,9 @@ export interface IUser {
 	lastName?: string;
 	country?: string;
 	profileImg?: string;
-	userType: UserTypeEnum
+	userType: UserTypeEnum;
 	hash: string;
-	_id?: string
+	_id?: string;
 }
 
 export interface IUserSignUp {
@@ -24,17 +24,22 @@ export interface IUserSignUp {
 	password: string;
 }
 
+export interface IUserSignIn {
+	username: string;
+	password: string;
+}
+
 export interface IUserResponse<T> {
 	success: boolean;
 	error?: string;
-	newUser?: T;
+	user?: T;
 }
 
 export const userType = gql`
 	type UserResponse {
 		success: Boolean!
 		error: String
-		newUser: User
+		user: User
 	}
 	type User {
 		username: String!

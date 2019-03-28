@@ -1,6 +1,5 @@
 import { pinType } from "./pinType";
-import { userType } from "./userType";
 import { sessionType } from "./sessionType";
-
+import { userType } from "./userType";
 
 export { pinType, userType, sessionType };

@@ -5,6 +5,6 @@ export const pinsResolvers = {
 		getPins: () => PinModel.all()
 	},
 	// Mutation: {
-	// 	// addPin: () => 
+	// 	// addPin: () =>
 	// }
 };
