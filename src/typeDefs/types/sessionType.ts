@@ -1,6 +1,7 @@
 import { gql } from "apollo-server";
 
 export interface ISession {
+	id?: string;
 	ssid: string;
 	userId: string;
 	expiresOn: string;

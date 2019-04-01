@@ -5,6 +5,7 @@ export interface IPin {
 	imageUrl?: string;
 	title: string;
 	description?: string;
+	id?: number;
 }
 
 export const pinType = gql`

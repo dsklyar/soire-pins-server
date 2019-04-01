@@ -15,7 +15,7 @@ export interface IUser {
 	profileImg?: string;
 	userType: UserTypeEnum;
 	hash: string;
-	_id?: string;
+	id?: string;
 }
 
 export interface IUserSignUp {
